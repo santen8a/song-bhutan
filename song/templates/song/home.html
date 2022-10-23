@@ -1,0 +1,28 @@
+{% extends './base.html' %}
+
+
+{% block title %} Home Page {% endblock %}
+
+
+{% block content %}
+
+<header>
+    <h1 class="py-3">Latest Additions</h1>
+    <div class="list-group">
+
+    {% if object_list %} 
+        {%for post in object_list%}
+        <a href="{% url 'detail-song' post.id %}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{post.title}}</h5>
+                <small>{{post.updated_date}}</small>
+            </div>
+            <p class="mb-1">{{post.artist}}</p>
+            <small>{{post.body|slice:"200"}}</small>
+        </a>
+        {% endfor %}
+    {% endif %}
+    </div>
+</header>
+
+{% endblock %}

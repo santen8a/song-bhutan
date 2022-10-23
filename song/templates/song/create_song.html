@@ -1,0 +1,32 @@
+{% extends './base.html' %}
+
+{% block title %}
+Add New Song
+{% endblock %}
+
+
+{% block content %}
+<h1 class="py-3">{{post.title}}</h1>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {{form.media}}
+            {{form.as_p}}
+            <small>Category not listed here? <a href="{% url 'create-category' %}">Click here to add new category</a> </small>
+            <br>
+            <button class="btn btn-primary">Submit</button>
+            <a href="{% url 'home' %" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+</div>
+
+<script>
+    var name = "{{user.id}}";
+    document.getElementById("elder").value = name;
+</script>
+
+
+{% endblock %}
